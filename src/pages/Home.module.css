@@ -1,0 +1,12 @@
+.servicesContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 768px){
+    .servicesContainer {
+        grid-template-columns: 1fr;
+        justify-content: center;
+    }
+}
