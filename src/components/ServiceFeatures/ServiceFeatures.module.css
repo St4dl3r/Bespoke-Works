@@ -22,57 +22,23 @@
     justify-content: center;
 
     background: var(--color-surface);
-    border: 1px solid var(--color-border);
+    border: 2px solid var(--color-border);
     border-radius: 16px;
 
-    
-}
-
-.accentLine {
-    display: block;
-    width: 40px;
-    height: 3px;
-    margin-bottom: 22px;
-
-    background: var(--color-primary);
-    border-radius: 3px;
-    transition: opacity 0.2s ease;
-}
-
-.animatedBorder {
-    position: absolute;
-    inset: 12px;
-    width: calc(100% - 24px);
-    height: calc(100% - 24px);
-    pointer-events: none;
-    overflow: visible;
-    
-}
-
-.animatedBorder rect {
-    fill: none;
-    stroke: var(--color-primary);
-    stroke-width: 0.8;
-    stroke-linejoin: round;
-
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
-
-    opacity: 0;
-
     transition: 
-        stroke-dashoffset 1s ease,
-        opacity 0.1s ease;
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+    
 }
 
-.featureCard:hover .animatedBorder rect {
-    stroke-dashoffset: 0;
-    opacity: 1;
+.featureCard:hover {
+    transform: translateY(-6px);
+    border-color: var(--color-primary);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
 }
 
-.featureCard:hover .accentLine {
-    opacity: 0;
-}
+
 
 @media (max-width: 768px) {
     .featuresGrid{
@@ -80,9 +46,16 @@
     }
 }
 
+@media (hover: none) {
+    .featureCard:hover {
+        transform: none;
+        border-color: var(--color-border);
+        box-shadow: none;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
-    .animatedBorder rect,
-    .accentLine {
+    .featureCard {
         transition: none;
     }
 }
