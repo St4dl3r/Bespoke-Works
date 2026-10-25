@@ -1,6 +1,7 @@
 import ServiceHero from "../components/ServiceHero/ServiceHero";
 import ServiceFeatures from "../components/ServiceFeatures/ServiceFeatures";
 import ServiceSection from "../components/ServiceSection/ServiceSection";
+import SectionDivider from "../components/SectionDivider/SectionDivider";
 import ProjectPreview from "../components/ProjectPreview/ProjectPreview";
 import ContactCTA from "../components/ContactCTA/ContactCTA";
 import heroImage from "../assets/images/frez-hero.jpg"
@@ -66,6 +67,8 @@ function FrezowanieCNC() {
                 description="Wykonywanie elementów technicznych, prototypów oraz części na potrzeby produkcji jednostkowej i małoseryjnej."
                 image= {frez1Image}
             />
+
+            <SectionDivider />
 
             <ServiceSection 
                 title="Proces obróbki CNC"

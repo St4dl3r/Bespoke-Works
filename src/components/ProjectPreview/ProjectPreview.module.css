@@ -1,18 +1,213 @@
+
+.preview {
+    max-width: 1500px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 80px 24px;
+    box-sizing: border-box;
+}
+
+.preview h2 {
+    font-size: clamp(28px, 3vw, 42px);
+    color: var(--color-text);
+    margin: 0 0 35px;
+}
+
 .projectsGrid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
 }
+
+/* Karta realizacji */
+
+.projectCard {
+    position: relative;
+    height: 330px;
+    overflow: hidden;
+
+    border-radius: 18px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    isolation: isolate;
+}
+
+/* Zdjęcie */
 
 .projectImage {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
     display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition:
+        transform 0.6s ease,
+        filter 0.5s ease;
 }
 
+.projectCard:hover .projectImage {
+    filter: brightness(0.45);
+    transform: scale(1.05);
+}
+
+/* Ukośny panel */
+
+.projectOverlay {
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        120deg,
+        rgba(25, 25, 25, 0.98),
+        rgba(65, 65, 65, 0.92)
+    );
+
+    clip-path: polygon(
+        0 0,
+        0 0,
+        0 100%,
+        0 100%
+    );
+
+    transition:
+        clip-path 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.projectCard:hover .projectOverlay {
+    clip-path: polygon(
+        0 0,
+        90% 0,
+        65% 100%,
+        0 100%
+    );
+}
+
+/* Informacje o realizacji */
+
+.projectInfo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    width: 65%;
+    box-sizing: border-box;
+    padding: 24px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    opacity: 0;
+    transform: translateX(-20px);
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.5s ease;
+}
+
+.projectCard:hover .projectInfo {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.projectInfo h3 {
+    font-size: 22px;
+    line-height: 1.25;
+    color: var(--color-text);
+    margin: 0 0 12px;
+}
+
+.projectInfo > p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin: 0;
+}
+
+/* Materiały */
+
+.materials {
+    margin-top: 20px;
+}
+
+.materials span {
+    color: var(--color-primary);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.materials p {
+    color: var(--color-text);
+    font-size: 14px;
+    margin: 6px 0 0;
+}
+
+/* Tytuł widoczny przed najechaniem */
+
+.projectTitle {
+    position: absolute;
+    bottom: 20px;
+    left: 24px;
+
+    margin: 0;
+    font-size: 20px;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+
+    transition: opacity 0.3s ease;
+}
+
+.projectCard:hover .projectTitle {
+    opacity: 0;
+}
+
+/* Link do wszystkich realizacji */
+
+.allProjectsLink {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 14px 24px;
+
+    background: var(--color-primary);
+    color: var(--color-background);
+
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+.allProjectsLink:hover {
+    background: #f5cc62;
+    transform: translateY(-3px);
+}
+
+/* Responsywność */
+
 @media (max-width: 768px) {
+    .preview {
+        padding: 55px 24px;
+    }
+
     .projectsGrid {
         grid-template-columns: 1fr;
+    }
+
+    .projectCard {
+        height: 350px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .projectImage,
+    .projectOverlay,
+    .projectInfo,
+    .projectTitle,
+    .allProjectsLink {
+        transition: none;
     }
 }

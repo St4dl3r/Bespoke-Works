@@ -32,8 +32,8 @@ function ServiceSection({
                 }
             },
             {
-            threshold: 0,
-            rootMargin: "0px 0px 100px 0px",
+            threshold: 0.85,
+            rootMargin: "0px",
             }
         );
 
@@ -47,6 +47,7 @@ function ServiceSection({
             <div className={styles.content}>
                 <h2>{title}</h2>
                 <p>{description}</p>
+                <span className={styles.accentLine} aria-hidden="true"></span>
             </div>
 
             <div className={styles.image}>

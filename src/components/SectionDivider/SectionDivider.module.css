@@ -1,0 +1,96 @@
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+
+    width: calc(100% - 100px);
+    max-width: none;
+    height: 120px;
+    margin: 30px auto;
+}
+
+.line {
+    flex: 1;
+    height: 2px;
+    background: var(--color-primary);
+
+    transform: scaleX(0);
+    transform-origin: center;
+}
+
+.pulse {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+    background: var(--color-primary);
+    opacity: 0;
+}
+
+.visible .line {
+    animation: expandLine 0.65s ease-out forwards;
+}
+
+@keyframes expandLine {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.visible .pulse {
+    animation: pulseSignal 1.2s ease-out 0.45s forwards;
+}
+
+@keyframes pulseSignal {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+        box-shadow: 0 0 0 0 rgba(232, 189, 69, 0.45);
+    }
+
+    35% {
+        opacity: 1;
+        transform: scale(1.7);
+        box-shadow: 0 0 0 0 rgba(232, 189, 69, 0.45);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        box-shadow: 0 0 0 18px rgba(232, 189, 69, 0);
+    }
+}
+
+@media (max-width: 768px) {
+    .divider {
+        width: calc(100% - 40px);
+        height: 80px;
+        margin: 35px auto;
+    }
+
+    .line {
+        height: 1px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .line {
+        transform: scaleX(1);
+    }
+
+    .pulse {
+        opacity: 1;
+    }
+
+    .visible .line,
+    .visible .pulse {
+        animation: none;
+    }
+}

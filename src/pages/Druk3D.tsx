@@ -1,6 +1,7 @@
 import ServiceHero from "../components/ServiceHero/ServiceHero";
 import ServiceFeatures from "../components/ServiceFeatures/ServiceFeatures";
 import ServiceSection from "../components/ServiceSection/ServiceSection";
+import SectionDivider from "../components/SectionDivider/SectionDivider";
 import ProjectPreview from "../components/ProjectPreview/ProjectPreview";
 import ContactCTA from "../components/ContactCTA/ContactCTA";
 import heroImage from "../assets/images/zdjecie1.jpg"
@@ -65,6 +66,8 @@ function Druk3D() {
             description="Opis zastosowan druku 3D"
             image={zastosowaniaImage}
             />
+
+            <SectionDivider />
 
             <ServiceSection
             title="Materiały do druku 3D"

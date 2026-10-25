@@ -1,5 +1,6 @@
 import ServiceHero from "../components/ServiceHero/ServiceHero";
 import ServiceFeatures from "../components/ServiceFeatures/ServiceFeatures";
+import SectionDivider from "../components/SectionDivider/SectionDivider";
 import ServiceSection from "../components/ServiceSection/ServiceSection";
 import ProjectPreview from "../components/ProjectPreview/ProjectPreview";
 import ContactCTA from "../components/ContactCTA/ContactCTA";
@@ -64,6 +65,9 @@ function Grawerowanie() {
                 description="Znakowanie elementów przemysłowych, nanoszenie napisów, symboli oraz oznaczeń identyfikacyjnych."
                 image = {grawImage}
             />
+
+            <SectionDivider />
+
             <ServiceSection 
                 title="Znakowanie elementów technicznych"
                 description="Indywidualne oznaczanie detali zgodnie z wymaganiami projektu i przeznaczeniem elementu."

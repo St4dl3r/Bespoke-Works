@@ -1,10 +1,17 @@
 .section{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: center;
-    min-height: 350px;
-    margin-bottom: 50px;
+    gap: 70px;
+
+    max-width: 1500px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 70px 24px;
+    box-sizing: border-box;
+
+    min-height: 450px;
+
 }
 
 .sectionImage {
@@ -46,17 +53,66 @@
 }
 
 .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+
     opacity: 0;
-    transform: translateY(65px);
+    transform: translatex(-70px);
+    
+    
     transition:
-        opacity 0.75s ease-out,
-        transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+        opacity 0.85s ease,
+        transform 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.content h2 {
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-text);
+    margin: 0;
+}
+
+.content p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    max-width: 520px;
+    margin: 0;
+}
+
+.accentLine {
+    display: block;
+    width: 45px;
+    height: 3px;
+    background: var(--color-primary);
+    border-radius: 3px;
+}
+
+.reversed .content {
+    order: 2;
+    transform: translateX(70px);
+}
+
+.reversed .image {
+    order: 1;
+}
+
+
+
 .image {
+    height: 420px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: var(--color-surface);
+
     clip-path: inset(0 100% 0 0);
     transition: clip-path 0.85s cubic-bezier(0.77, 0, 0.18, 1);
 }
+
+
 
 .visible .content {
     opacity: 1;
@@ -68,6 +124,11 @@
 }
 
 .sectionImage {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
     transform: scale(1.12);
     transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -87,4 +148,60 @@
         clip-path: none;
         transition: none;
     }
+}
+
+@media (max-width: 768px) {
+    .section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 55px 24px;
+        min-height: auto;
+    }
+
+    .image {
+        height: 260px;
+    }
+
+    .content h2 {
+        font-size: 30px;
+    }
+
+    .content p {
+        font-size: 16px;
+    }
+
+    .reversed .content,
+    .reversed .image {
+        order: initial;
+    }
+
+    .content,
+    .reversed .content {
+        transform: translateX(-35px);
+    }
+
+    .visible .content,
+    .visible.reversed .content {
+        transform: translateX(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+     .content,
+     .reversed .content {
+        opacity: 1;
+        transform: none;
+        transition: none;
+}
+
+.image {
+    clip-path: none;
+    transition: none;
+}
+
+.sectionImage {
+    transform: none;
+    transform: none;
+}
+
 }
