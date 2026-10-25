@@ -12,12 +12,18 @@ import real10Image from "../assets/images/realizacje/graw-real3.jpg";
 import real11Image from "../assets/images/realizacje/cnc-real2.jpg";
 import real12Image from "../assets/images/realizacje/cnc-real3.jpg";
 
+export type ProjectCategory = 
+| "druk3d"
+| "cad"
+| "grawerowanie"
+|"cnc"
+
 export type Project = {
     id: number;
     title: string;
     description: string;
     image: string;
-    category: string;
+    category: ProjectCategory;
     materials: string[];
 };
 

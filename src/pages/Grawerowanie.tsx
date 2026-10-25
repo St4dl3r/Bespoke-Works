@@ -7,9 +7,7 @@ import ContactCTA from "../components/ContactCTA/ContactCTA";
 import heroImage from "../assets/images/graw-hero.jpg"
 import grawImage from "../assets/images/graw1.jpg"
 import graw2Image from "../assets/images/graw2.jpg"
-import grawProjectImage from "../assets/images/realizacje/graw-real1.jpg"
-import grawProjectImage2 from "../assets/images/realizacje/graw-real2.jpg"
-import grawProjectImage3 from "../assets/images/realizacje/graw-real3.jpg"
+
 
 
 function Grawerowanie() {
@@ -31,26 +29,6 @@ function Grawerowanie() {
         }
     ]
 
-    const projects = [
-        {
-            title: "Oznaczenia techniczne",
-            description: "Przykładowe znakowanie identyfikacyjne elementu metalowego",
-            image: grawProjectImage
-        },
-        
-        {
-            title: "Grawerowanie logo",
-            description: "Przykład nanoszenia grafiki na powierzchnię elementu",
-            image: grawProjectImage2
-        },
-        
-        {
-            title: "Tabliczki znamionowe",
-            description: "Przykładowe oznaczenia informacyjne i identyfikacyjne",
-            image: grawProjectImage3
-        },
-
-    ]
 
     return(
         <div>
@@ -74,7 +52,7 @@ function Grawerowanie() {
                 image= {graw2Image}
                 reverse= {true}
             />
-            <ProjectPreview projects={projects}/>
+            <ProjectPreview category="grawerowanie"/>
             <ContactCTA 
                 title="Potrzebujesz znakowania lub grawerowania laserowego?"
                 description="Skontaktuj się z nami, aby omówić szczegóły swojego projektu."

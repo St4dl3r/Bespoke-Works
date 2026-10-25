@@ -57,7 +57,7 @@ function CadSkanowanie() {
                 reverse= {true}
             />
 
-            <ProjectPreview category="druk3d"/>
+            <ProjectPreview category="cad"/>
             <ContactCTA 
                 title="Potrzebujesz projektu CAD lub skanowania 3D?"
                 description="Skontaktuj się z nami, aby omówić wymagania swojego projektu."
