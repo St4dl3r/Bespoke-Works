@@ -1,4 +1,3 @@
-
 import real1Image from "../assets/images/realizacje/real1.jpg";
 import real2Image from "../assets/images/realizacje/cad-real1.jpg";
 import real3Image from "../assets/images/realizacje/graw-real1.jpg";
@@ -11,6 +10,10 @@ import real9Image from "../assets/images/realizacje/graw-real2.jpg";
 import real10Image from "../assets/images/realizacje/graw-real3.jpg";
 import real11Image from "../assets/images/realizacje/cnc-real2.jpg";
 import real12Image from "../assets/images/realizacje/cnc-real3.jpg";
+import real16Image from "../assets/images/realizacje/cnc-real4.jpg";
+import real15Image from "../assets/images/realizacje/graw-real4.jpg";
+import real13Image from "../assets/images/realizacje/real4.jpg";
+import real14Image from "../assets/images/realizacje/cad-real4.jpg";
 
 export type ProjectCategory = 
 | "druk3d"
@@ -124,6 +127,39 @@ export const projects: Project[] = [
         image: real12Image,
         category: "cnc",
         materials: ["Aluminium"]
+    },
+
+    {
+        id: 13,
+        title: "Druk elementu użytkowego FDM",
+        description: "Przykładowy proces wytwarzania elementu użytkowego za pomocą drukarki 3D.",
+        image: real13Image,
+        category: "druk3d",
+        materials: []
+    },
+    {
+        id: 14,
+        title: "Projektowanie modelu 3D",
+        description: "Przykładowe projektowanie i opracowywanie geometrii elementu w oprogramowaniu CAD.",
+        image: real14Image,
+        category: "cad",
+        materials: []
+    },
+    {
+        id: 15,
+        title: "Precyzyjne znakowanie laserowe",
+        description: "Przykładowy proces nanoszenia oznaczeń przy wykorzystaniu technologii laserowej.",
+        image: real15Image,
+        category: "grawerowanie",
+        materials: []
+    },
+    {
+        id: 16,
+        title: "Obróbka metalowego elementu CNC",
+        description: "Przykładowy proces frezowania elementu metalowego z wykorzystaniem obrabiarki CNC.",
+        image: real16Image,
+        category: "cnc",
+        materials: []
     }
 ];
 

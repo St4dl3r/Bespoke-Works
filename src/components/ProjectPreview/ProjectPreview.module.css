@@ -19,7 +19,25 @@
     gap: 30px;
 }
 
-/* Karta realizacji */
+
+.carouselViewport {
+    width: 100%;
+    overflow: hidden;
+}
+
+.carouselTrack {
+    display: flex;
+    grid-template-columns: none;
+    gap: 30px;
+    touch-action: pan-y pinch-zoom;
+}
+
+.carouselTrack .projectCard {
+    flex: 0 0 calc((100% - 60px) / 3);
+    min-width: 0;
+    box-sizing: border-box;
+}
+
 
 .projectCard {
     position: relative;
@@ -32,7 +50,6 @@
     isolation: isolate;
 }
 
-/* Zdjęcie */
 
 .projectImage {
     display: block;
@@ -50,7 +67,6 @@
     transform: scale(1.05);
 }
 
-/* Ukośny panel */
 
 .projectOverlay {
     position: absolute;
@@ -76,13 +92,12 @@
 .projectCard:hover .projectOverlay {
     clip-path: polygon(
         0 0,
-        90% 0,
-        65% 100%,
+        65% 0,
+        45% 100%,
         0 100%
     );
 }
 
-/* Informacje o realizacji */
 
 .projectInfo {
     position: absolute;
@@ -90,7 +105,7 @@
     left: 0;
     bottom: 0;
 
-    width: 65%;
+    width: 50%;
     box-sizing: border-box;
     padding: 24px;
 
@@ -125,7 +140,6 @@
     margin: 0;
 }
 
-/* Materiały */
 
 .materials {
     margin-top: 20px;
@@ -143,7 +157,6 @@
     margin: 6px 0 0;
 }
 
-/* Tytuł widoczny przed najechaniem */
 
 .projectTitle {
     position: absolute;
@@ -162,7 +175,6 @@
     opacity: 0;
 }
 
-/* Link do wszystkich realizacji */
 
 .allProjectsLink {
     display: inline-block;
@@ -186,7 +198,6 @@
     transform: translateY(-3px);
 }
 
-/* Responsywność */
 
 @media (max-width: 768px) {
     .preview {
@@ -200,6 +211,7 @@
     .projectCard {
         height: 350px;
     }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -209,5 +221,20 @@
     .projectTitle,
     .allProjectsLink {
         transition: none;
+    }
+}
+
+
+
+@media (min-width: 769px) and (max-width: 1100px) {
+    .carouselTrack .projectCard {
+        flex-basis: calc((100% - 30px) / 2);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .carouselTrack .projectCard {
+        flex-basis: 100%;
     }
 }
