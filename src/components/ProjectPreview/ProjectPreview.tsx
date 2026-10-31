@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef ,useState } from "react";
 import { Link } from "react-router-dom";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
@@ -24,6 +24,11 @@ function ProjectPreview({ category }: ProjectPreviewProps) {
         : filteredProjects;
 
     const [reduceMotion, setReduceMotion] = useState(false);
+
+    const [activeTouchProject, setActiveTouchProject] = useState<string | null>(null);
+
+    const touchTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
 
     useEffect(() => {
         const query = window.matchMedia(
@@ -69,9 +74,62 @@ function ProjectPreview({ category }: ProjectPreviewProps) {
         }
     }, [emblaApi, isCarousel, reduceMotion]);
 
+
+    const handleProjectTouch = (projectKey: string) => {
+        if(touchTimerRef.current) {
+            clearTimeout(touchTimerRef.current);
+        }
+
+        setActiveTouchProject(projectKey);
+
+        emblaApi?.plugins().autoplay?.stop();
+
+        touchTimerRef.current = setTimeout(() => {
+            setActiveTouchProject(null);
+            touchTimerRef.current = null;
+
+            if (isCarousel && !reduceMotion) {
+                emblaApi?.plugins().autoplay?.play();
+            }
+        }, 5000);
+    };
+
+
+    useEffect(() =>{
+        return () => {
+            if (touchTimerRef.current){
+                clearTimeout(touchTimerRef.current);
+            }
+        };
+    }, []);
+    
     return (
         <section className={styles.preview}>
+        <div className={styles.previewHeader}>
             <h2>Przykładowe realizacje</h2>
+
+            {isCarousel && (
+                <div className={styles.carouselControls}>
+                    <button
+                        type="button"
+                        onClick={() => emblaApi?.scrollPrev()}
+                        aria-label="Poprzednie realizacje"
+                    >
+                        <span aria-hidden="true">🠘</span>
+                    </button>
+
+                    <button
+                    type="button"
+                    onClick={() => emblaApi?.scrollNext()}
+                    aria-label="Następne realizacje"
+                    >
+                        <span aria-hidden="true">🠚</span>
+                    </button>
+                </div>
+            )}
+
+        </div>
+            
 
             <div
                 ref={emblaRef}
@@ -85,7 +143,15 @@ function ProjectPreview({ category }: ProjectPreviewProps) {
                     {displayProjects.map((project, index) => (
                         <article
                             key={`${project.id}-${index}`}
-                            className={styles.projectCard}
+                            className={`${styles.projectCard} ${
+                                activeTouchProject ===`${project.id}-${index}`
+                                ? styles.touchActive
+                                : ""
+                            }`}
+
+                            onTouchStart={() =>
+                                handleProjectTouch(`${project.id}-${index}`)
+                            }
                         >
                             <img
                                 src={project.image}
@@ -116,26 +182,6 @@ function ProjectPreview({ category }: ProjectPreviewProps) {
                     ))}
                 </div>
             </div>
-
-            {isCarousel && (
-                <div className={styles.carouselControls}>
-                    <button
-                        type="button"
-                        onClick={() => emblaApi?.scrollPrev()}
-                        aria-label="Poprzednie realizacje"
-                    >
-                        &#8592;
-                    </button>
-
-                    <button
-                        type="button"
-                        onClick={() => emblaApi?.scrollNext()}
-                        aria-label="Następne realizacje"
-                    >
-                        &#8594;
-                    </button>
-                </div>
-            )}
 
             <Link
                 to="/realizacje"

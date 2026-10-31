@@ -1,0 +1,164 @@
+
+.wrapper {
+    max-width: 1500px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 90px 24px 110px;
+    box-sizing: border-box;
+}
+
+
+.cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+
+    padding: 85px 30px;
+
+    text-align: center;
+    background: var(--color-surface);
+    border-radius: 24px;
+
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+
+.visible .cta {
+    opacity: 1;
+}
+
+
+.cta h2 {
+    margin: 0;
+    font-size: clamp(32px, 4vw, 54px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--color-text);
+}
+
+
+.cta p {
+    max-width: 650px;
+    margin: 0;
+
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+}
+
+.ctaButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+
+    margin-top: 12px;
+    padding: 16px 30px;
+
+    background: var(--color-primary);
+    color: var(--color-background);
+
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.cta h2,
+.cta p,
+.ctaButton {
+    opacity: 0;
+    transform: translateY(35px);
+}
+
+
+
+.visible .cta h2 {
+    opacity: 1;
+    transform: translateY(0);
+
+    transition:
+        opacity 0.7s ease 0.15s,
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+}
+
+
+
+.visible .cta p {
+    opacity: 1;
+    transform: translateY(0);
+
+    transition:
+        opacity 0.7s ease 0.3s,
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+
+
+
+.visible .ctaButton {
+    opacity: 1;
+    transform: translateY(0);
+
+    transition-delay: 0.45s, 0.45s, 0s, 0s;
+}
+
+
+
+@media (hover: hover) {
+    .visible .ctaButton:hover {
+        background: #f5cc62;
+        transform: translateY(-4px);
+        box-shadow: 0 10px 25px rgba(232, 189, 69, 0.15);
+    }
+}
+
+.ctaButton:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+}
+
+
+@media (max-width: 768px) {
+    .wrapper {
+        padding: 60px 20px 80px;
+    }
+
+    .cta {
+        padding: 60px 22px;
+        gap: 20px;
+    }
+
+    .cta h2 {
+        font-size: clamp(28px, 7vw, 38px);
+    }
+
+    .cta p {
+        font-size: 16px;
+    }
+
+    .ctaButton {
+        padding: 15px 20px;
+        font-size: 14px;
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    .cta,
+    .cta h2,
+    .cta p,
+    .ctaButton {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}

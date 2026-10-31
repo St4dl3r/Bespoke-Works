@@ -3,25 +3,26 @@ import styles from "./Footer.module.css";
 
 function Footer() {
     return(
-        <footer>
+        <footer className={styles.footer}>
             <div className={styles.footerContent}>
-                <section>
-                    <h2>Firma</h2>
-                    <p>krótki opis działaności</p>
+                <section className={styles.company}>
+                    <h2>Bespoke Works</h2>
+                    <p>Tutaj bedzie adres firmy</p>
                 </section>
             
             
           
-                <section>
+                <nav className={styles.navigation} aria-label="Nawigacja w stopce">
                     <h2>Nawigacja</h2>
+
                     <NavLink to="/">Strona Główna</NavLink>
                     <NavLink to="/realizacje">Realizacje</NavLink>
                     <NavLink to="/kontakt">Kontakt</NavLink>
-                </section>
+                </nav>
             
             
             
-                <section>
+                <section className={styles.contact}>
                     <h2>Kontakt</h2>
                     <a href="tel:+48730292461">730 292 461</a>
                     <a href="mailto:bespokeworkseu@gmail.com">E-Mail</a>
@@ -30,7 +31,11 @@ function Footer() {
                 </section>
             </div>
             
-            <div>© 2026 Bespoke Works. Wszelkie prawa zastrzeżone.</div>
+            <div className={styles.footerBottom}>
+                © {new Date().getFullYear()} Bespoke Works. 
+                Wszelkie prawa zastrzeżone.
+                
+                </div>
             
         </footer>
     );

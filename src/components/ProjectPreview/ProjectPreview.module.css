@@ -10,8 +10,83 @@
 .preview h2 {
     font-size: clamp(28px, 3vw, 42px);
     color: var(--color-text);
-    margin: 0 0 35px;
+    margin: 0;
 }
+
+
+.previewHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 35px;
+}
+
+.previewHeader h2 {
+    margin: 0;
+    flex: 1;
+    min-width: 0;
+}
+
+.carouselControls {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+
+    width: fit-content;
+    max-width: 100%;
+
+    gap: 0;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--color-surface);
+}
+
+.carouselControls button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 56px;
+    height: 48px;
+    padding: 0;
+
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    color: var(--color-text);
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+.carouselControls button:first-child {
+    border-right: 1px solid var(--color-border);
+}
+
+.carouselControls button span {
+    font-size: 25px;
+    line-height: 1;
+}
+
+@media (hover: hover) {
+    .carouselControls button:hover {
+        background: var(--color-primary);
+        color: var(--color-background);
+    }
+}
+
+.carouselControls button:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: -3px;
+}
+
 
 .projectsGrid {
     display: grid;
@@ -27,7 +102,6 @@
 
 .carouselTrack {
     display: flex;
-    grid-template-columns: none;
     gap: 30px;
     touch-action: pan-y pinch-zoom;
 }
@@ -39,14 +113,16 @@
 }
 
 
+
 .projectCard {
     position: relative;
     height: 330px;
     overflow: hidden;
 
+    box-sizing: border-box;
     border-radius: 18px;
-    background: var(--color-surface);
     border: 1px solid var(--color-border);
+    background: var(--color-surface);
     isolation: isolate;
 }
 
@@ -97,6 +173,7 @@
         0 100%
     );
 }
+
 
 
 .projectInfo {
@@ -183,8 +260,8 @@
 
     background: var(--color-primary);
     color: var(--color-background);
-
     border-radius: 10px;
+
     text-decoration: none;
     font-weight: 600;
 
@@ -199,33 +276,6 @@
 }
 
 
-@media (max-width: 768px) {
-    .preview {
-        padding: 55px 24px;
-    }
-
-    .projectsGrid {
-        grid-template-columns: 1fr;
-    }
-
-    .projectCard {
-        height: 350px;
-    }
-
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .projectImage,
-    .projectOverlay,
-    .projectInfo,
-    .projectTitle,
-    .allProjectsLink {
-        transition: none;
-    }
-}
-
-
-
 @media (min-width: 769px) and (max-width: 1100px) {
     .carouselTrack .projectCard {
         flex-basis: calc((100% - 30px) / 2);
@@ -233,8 +283,87 @@
 }
 
 
+
 @media (max-width: 768px) {
+    .preview {
+        padding: 55px 24px;
+    }
+
+    .previewHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .carouselControls {
+        align-self: flex-end;
+    }
+
+    .carouselControls button {
+        width: 44px;
+        height: 44px;
+    }
+
+    .projectsGrid {
+        grid-template-columns: 1fr;
+    }
+
     .carouselTrack .projectCard {
         flex-basis: 100%;
+    }
+
+    .projectCard {
+        height: 350px;
+    }
+}
+
+
+@media (hover: none) {
+    .projectCard:not(.touchActive):hover .projectImage {
+        filter: brightness(1);
+        transform: scale(1);
+    }
+
+    .projectCard:not(.touchActive):hover .projectOverlay {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+
+    .projectCard:not(.touchActive):hover .projectInfo {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    .projectCard:not(.touchActive):hover .projectTitle {
+        opacity: 1;
+    }
+
+    .projectCard.touchActive .projectImage {
+        filter: brightness(0.45);
+        transform: scale(1.05);
+    }
+
+    .projectCard.touchActive .projectOverlay {
+        clip-path: polygon(0 0, 65% 0, 45% 100%, 0 100%);
+    }
+
+    .projectCard.touchActive .projectInfo {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .projectCard.touchActive .projectTitle {
+        opacity: 0;
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    .projectImage,
+    .projectOverlay,
+    .projectInfo,
+    .projectTitle,
+    .allProjectsLink,
+    .carouselControls button {
+        transition: none;
     }
 }

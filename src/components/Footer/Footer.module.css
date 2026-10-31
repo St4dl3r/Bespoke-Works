@@ -1,5 +1,134 @@
+.footer {
+    width: 100%;
+    background: #171717;
+    border-top: 1px solid var(--color-border);
+    box-sizing: border-box;
+}
+
 .footerContent {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 70px;
+
+    max-width: 1500px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 75px 24px 65px;
+
+    box-sizing: border-box;
+}
+
+.footerContent > * {
+    min-width: 0;
+}
+
+.company h2 {
+    margin: 0;
+
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.navigation,
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.navigation h2,
+.contact h2 {
+    margin: 0 0 12px;
+
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.navigation a,
+.contact a {
+    color: var(--color-text-muted);
+    font-size: 15px;
+    line-height: 1.5;
+    text-decoration: none;
+
+    transition: color 0.3s ease;
+}
+
+.navigation a:hover,
+.contact a:hover {
+    color: var(--color-primary);
+}
+
+.footerBottom {
+    padding: 25px 24px;
+    border-top: 1px solid var(--color-border);
+
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 13px;
+}
+
+@media (min-width: 901px) and (max-width: 1350px) {
+    .footerContent {
+        grid-template-columns: 1.3fr 1fr 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 900px) {
+    .footerContent {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 40px 30px;
+        padding: 60px 24px 50px;
+    }
+
+    .company {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 600px) {
+    .footerContent {
+        gap: 35px 20px;
+        padding: 50px 24px 40px;
+    }
+
+    .company h2 {
+        font-size: 26px;
+    }
+
+    .navigation h2,
+    .contact h2 {
+        font-size: 17px;
+    }
+
+    .navigation,
+    .contact {
+        gap: 12px;
+    }
+
+    .navigation a,
+    .contact a {
+        font-size: 13px;
+        overflow-wrap: anywhere;
+    }
+
+    .footerBottom {
+        padding: 22px 20px;
+        font-size: 12px;
+        line-height: 1.6;
+    }
+}
+
+@media (max-width: 340px) {
+    .footerContent {
+        grid-template-columns: 1fr;
+    }
+
+    .company {
+        grid-column: auto;
+    }
 }
