@@ -1,38 +1,373 @@
 .galleryGrid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-flow: row;
     gap: 24px;
 }
 
-.projectImage {
-    width: 100%;
-    height: 280px;
-    object-fit: cover;
-    display: block;
+.projectCard {
+    position: relative;
+    min-width: 0;
+    height: 360px;
+    overflow: hidden;
+
+    border-radius: 18px;
+    background: var(--color-surface);
+    isolation: isolate;
 }
 
-@media (max-width: 768px) {
-    .galleryGrid{
-        grid-template-columns: 1fr;
+.featuredCard {
+    grid-column: span 2;
+}
+
+.projectImage {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.imageCurtain {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+
+    background: var(--color-surface);
+
+    transform: scaleX(1);
+    transform-origin: right;
+
+    pointer-events: none;
+}
+
+
+@media (hover: hover) {
+    .projectCard:hover .projectImage {
+        transform: scale(1.05);
     }
+}
+
+.projectOverlay {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: flex-end;
+
+    padding: 28px;
+    box-sizing: border-box;
+
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.92) 0%,
+        rgba(0, 0, 0, 0.35) 45%,
+        transparent 85%
+    );
+}
+
+.projectOverlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.15);
+    opacity: 0;
+
+    transition: opacity 0.4s ease;
+}
+
+.projectInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+
+    width: 100%;
+
+    position: relative;
+    z-index: 1;
+}
+
+@media (hover: hover) {
+    .projectCard:hover .projectOverlay::before {
+        opacity: 1;
+    }
+}
+
+.projectCategory {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-primary);
+}
+
+.projectInfo h3 {
+    margin: 0;
+
+    font-size: clamp(20px, 2vw, 28px);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--color-text);
+}
+
+.projectInfo p {
+    max-width: 520px;
+    margin: 0;
+
+    font-size: 14px;
+    line-height: 1.6;
+    color: #d0d0d0;
+}
+
+@media (hover: hover) {
+    .projectInfo p {
+        opacity: 0;
+        transform: translateY(15px);
+        max-height: 0;
+        overflow: hidden;
+
+        transition:
+            opacity 0.35s ease,
+            transform 0.45s ease,
+            max-height 0.45s ease;
+    }
+
+    .projectCard:hover .projectInfo p {
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 120px;
+    }
+}
+
+
+
+.gallery {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 90px 24px 110px;
+    box-sizing: border-box;
+}
+
+.gallery h2 {
+    margin: 0 0 35px;
+
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--color-primary);
 }
 
 .filters {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 30px;
+    align-items: center;
+    gap: 16px 32px;
+
+    margin-bottom: 45px;
 }
 
 .filterButton {
-    padding: 10px 18px;
-    border: 1px solid #999;
+    position: relative;
+
+    padding: 10px 0;
+
+    border: none;
     background: transparent;
+    color: var(--color-text-muted);
+
+    font-size: 15px;
+    font-weight: 500;
+
     cursor: pointer;
+
+    transition: color 0.3s ease;
+}
+
+.filterButton::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background: var(--color-primary);
+
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.filterButton:hover {
+    color: var(--color-text);
 }
 
 .active {
-    background: #333;
-    color: white;
-    border-color: #333;
+    color: var(--color-primary);
+}
+
+.active::after {
+    transform: scaleX(1);
+}
+
+.filterButton:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 5px;
+}
+
+.projectCard {
+    opacity: 0;
+    transform: translateY(40px);
+
+    transition: 
+        opacity 0.75s ease,
+        transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.projectCard.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.galleryGrid .projectCard:nth-child(4n + 1) {
+    --reveal-delay: 0s;
+}
+
+.galleryGrid .projectCard:nth-child(4n + 2) {
+    --reveal-delay: 0.12s;
+}
+
+.galleryGrid .projectCard:nth-child(4n + 3) {
+    --reveal-delay: 0.24s;
+}
+
+.galleryGrid .projectCard:nth-child(4n + 4) {
+    --reveal-delay: 0.36s;
+}
+
+.galleryGrid .projectCard.visible {
+    transition-delay: var(--reveal-delay);
+}
+
+
+.projectCard.visible .imageCurtain {
+    animation: imageUncover 0.9s
+        cubic-bezier(0.77, 0, 0.18, 1)
+        calc(0.2s + var(--reveal-delay, 0s))
+        both;
+}
+
+@keyframes imageUncover {
+    from {
+        transform: scaleX(1);
+    }
+
+    to {
+        transform: scaleX(0);
+    }
+}
+
+.galleryGrid {
+    transition: 
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+.galleryGrid.changing {
+    opacity: 0;
+    transform: translateY(12px);
+}
+
+@media (max-width: 1000px) {
+    .galleryGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .projectCard {
+        height: 320px;
+    }
+
+    .projectOverlay {
+        padding: 22px;
+    }
+}
+
+@media (max-width: 600px) {
+    .projectCard {
+        height: 300px;
+    }
+
+    .galleryGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .featuredCard {
+        grid-column: auto;
+    }
+
+    .projectOverlay {
+        padding: 20px;
+    }
+
+    .projectInfo h3 {
+        font-size: 21px;
+    }
+
+    .projectInfo p {
+        font-size: 13px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .projectImage,
+    .projectOverlay::before,
+    .projectInfo p {
+        transition: none;
+    }
+
+    .galleryGrid .projectCard.visible {
+        transition-delay: 0s;
+    }
+
+    .imageCurtain {
+        display: none;
+        animation: none;
+    }
+
+    .galleryGrid {
+        transition: none;
+    }
+
+    .projectCard {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery {
+        padding: 60px 24px 80px;
+    }
+
+    .filters {
+        gap: 12px 22px;
+        margin-bottom: 30px;
+    }
+
+    .filterButton {
+        font-size: 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .filterButton,
+    .filterButton::after {
+        transition: none;
+    }
 }
