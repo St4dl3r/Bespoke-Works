@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import type { Project } from "../../data/projects";
 import type { ProjectCategory } from "../../data/projects";
 import styles from "./ProjectModal.module.css";
@@ -16,6 +16,10 @@ type ProjectModalProps = {
 };
 
 function ProjectModal({ project, onClose}: ProjectModalProps) {
+
+    const modalRef = useRef<HTMLDivElement>(null);
+    const closeButtonRef = useRef<HTMLButtonElement>(null);
+
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === "Escape") {
@@ -30,6 +34,66 @@ function ProjectModal({ project, onClose}: ProjectModalProps) {
         };
     }, [onClose]);
 
+    useEffect(() => {
+        const previousOverflow = document.body.style.overflow;
+
+        document.body.style.overflow  = "hidden";
+
+        return () => {
+            document.body.style.overflow = previousOverflow;
+        };
+    }, []);
+
+
+    useEffect(() => {
+        const previousFocus = document.activeElement;
+
+        closeButtonRef.current?.focus();
+
+        const handleTab = (event: KeyboardEvent) => {
+        if (event.key !== "Tab") return;
+
+        const modal = modalRef.current;
+        if (!modal) return;
+
+        const focusableElements = Array.from(
+            modal.querySelectorAll<HTMLElement>(
+                'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+            )
+        ).filter((element) => element.getClientRects().length > 0);
+
+        if (focusableElements.length === 0) {
+            event.preventDefault();
+            modal.focus();
+            return;
+        }
+
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+
+                if (event.shiftKey && document.activeElement === firstElement) {
+                    event.preventDefault();
+                    lastElement.focus();
+                } else if (!event.shiftKey && document.activeElement === lastElement) {
+                    event.preventDefault();
+                    firstElement.focus();
+                } else if (!modal.contains(document.activeElement)) {
+                    event.preventDefault();
+                    firstElement.focus();
+                }
+            };
+
+        document.addEventListener("keydown", handleTab);
+
+        return () => {
+            document.removeEventListener("keydown", handleTab);
+
+            if (previousFocus instanceof HTMLElement) {
+                previousFocus.focus();
+            }
+        };
+    }, [])
+
     return (
         <div
             role="presentation"
@@ -43,6 +107,7 @@ function ProjectModal({ project, onClose}: ProjectModalProps) {
             <div
                 className={styles.modal}
                 role="dialog"
+                ref={modalRef}
                 aria-modal="true"
                 aria-labelledby="project-modal-title" 
                 tabIndex={-1}
@@ -54,6 +119,7 @@ function ProjectModal({ project, onClose}: ProjectModalProps) {
                     <button
                     type="button"
                     className={styles.closeButton}
+                    ref={closeButtonRef}
                     onClick={onClose}
                     aria-label="Zamknij szczegóły realizacji"
                     >

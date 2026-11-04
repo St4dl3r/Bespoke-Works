@@ -1,0 +1,337 @@
+.contactPage {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 110px 24px 140px;
+    box-sizing: border-box;
+}
+
+.contactLayout {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    align-items: center;
+    gap: 90px;
+}
+
+.contactLayout {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    align-items: center;
+    gap: 90px;
+
+    overflow: clip;
+}
+
+.contactIntro,
+.contactPanel {
+    min-width: 0;
+}
+
+.contactIntro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+
+    opacity: 0;
+    transform: translateX(-45px);
+
+    transition: 
+        opacity 0.8s ease,
+        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1)
+}
+
+
+.contactIntro h1 {
+    max-width: 650px;
+    margin: 0;
+
+    font-size: clamp(38px, 4.2vw, 64px);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -1.5px;
+
+    color: var(--color-text);
+}
+
+.contactIntro p {
+    max-width: 500px;
+    margin: 0;
+
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+}
+
+.contactButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    margin-top: 10px;
+    padding: 17px 30px;
+
+    background: var(--color-primary);
+    color: var(--color-background);
+
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.contactButton span {
+    font-size: 22px;
+    line-height: 1;
+}
+
+.contactPanel {
+    display: flex;
+    flex-direction: column;
+
+    padding: 22px 36px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+
+    opacity: 0;
+    transform: translateX(45px);
+
+    transition:
+        opacity 0.8s ease 0.15s,
+        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+}
+
+.visible .contactIntro,
+.visible .contactPanel {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.contactRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 30px 0;
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.contactRow > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    min-width: 0;
+    text-align: left;
+}
+
+.contactRow > div > span {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+}
+
+.contactRow strong {
+    font-size: clamp(16px, 1.6vw, 21px);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--color-text);
+    overflow-wrap: anywhere;
+
+    transition: color 0.3s ease;
+}
+
+.rowArrow {
+    flex-shrink: 0;
+    color: var(--color-primary);
+    font-size: 26px;
+    line-height: 1;
+
+    transition: transform 0.3s ease;
+}
+
+.socialSection {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    padding: 30px 0 10px;
+}
+
+.socialSection > span {
+    color: var(--color-text-muted);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.socialLinks {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.socialLinks a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+
+    background: #292929;
+    color: var(--color-text);
+
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    text-decoration: none;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.socialLinks a svg {
+    color: inherit;
+}
+
+
+@media (hover: hover) {
+    .socialLinks a:hover {
+        background: var(--color-primary);
+        color: var(--color-background);
+        border-color: var(--color-primary);
+        transform: translateY(-4px);
+    }
+}
+
+@media (hover: hover) {
+    .contactRow:hover strong {
+        color: var(--color-primary);
+    }
+
+    .contactRow:hover .rowArrow {
+        transform: translate(4px, -4px);
+    }
+}
+
+@media (hover: hover) {
+    .contactButton:hover {
+        background: #f5cc62;
+        transform: translateY(-4px);
+        box-shadow: 0 12px 28px rgba(232, 189, 69, 0.15);
+    }
+}
+
+.contactButton:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+}
+
+@media (max-width: 900px) {
+    .contactLayout {
+        grid-template-columns: 1fr;
+        gap: 55px;
+    }
+
+    .contactPage {
+        padding: 70px 24px 100px;
+    }
+}
+
+@media (max-width: 600px) {
+    .contactLayout {
+        gap: 35px;
+    }
+
+    .contactPage {
+        padding: 55px 20px 80px;
+    }
+
+    .contactIntro {
+    gap: 22px;
+    transform: translateX(-20px);
+    }
+
+    .contactIntro h1 {
+    font-size: clamp(32px, 8vw, 42px);
+    letter-spacing: -0.8px;
+    }
+
+    .contactIntro p {
+    font-size: 16px;
+    }
+
+    .contactButton {
+    padding: 15px 24px;
+    font-size: 15px;
+    }
+
+    .contactPanel {
+    padding: 12px 22px;
+    border-radius: 16px;
+    transform: translateX(20px);
+    }
+
+    .contactRow {
+    padding: 24px 0;
+    }
+
+    .contactRow strong {
+    font-size: 16px;
+    }
+
+    .socialSection {
+    padding: 24px 0 12px;
+    }
+
+    .socialLinks a {
+    width: 48px;
+    height: 48px;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contactButton {
+        transition: none;
+    }
+}
+
+.contactRow:focus-visible,
+.socialLinks a:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contactRow strong,
+    .rowArrow,
+    .socialLinks a {
+        transition: none;
+    }
+
+    .contactIntro,
+    .contactPanel {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}

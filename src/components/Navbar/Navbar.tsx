@@ -48,8 +48,9 @@ function Navbar() {
             }`}
         >
             <div className={styles.logo}>
-                <NavLink to="/">
+                <NavLink to="/" className={styles.brand}>
                     <img src={logo} alt="Bespoke Works - Strona główna" />
+                    <span className={styles.brandName}>BESPOKE WORKS</span>
                 </NavLink>
             </div>
             <button
