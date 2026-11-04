@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { projects } from "../../data/projects";
+import type { Project } from "../../data/projects"
 import ProjectCard from "./ProjectCard";
+import ProjectModal from "./ProjectModal";
 import styles from "./ProjectGallery.module.css";
 
 function ProjectGallery() {
 
     const [activeCategory, setActiveCategory] = useState("all");
     const [isChanging, setIsChanging] = useState(false);
+    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
     const categories = [
         { label: "Wszystkie", value: "all"},
@@ -71,9 +74,16 @@ return (
                                 category.value === project.category
                         )?.label ?? ""
                     }
+                    onSelect={() => setSelectedProject(project)}
                 />
             ))}
         </div>
+            {selectedProject && (
+                <ProjectModal
+                    project={selectedProject}
+                    onClose={() => setSelectedProject(null)}
+                    />
+            )}
     </section>
 );
 

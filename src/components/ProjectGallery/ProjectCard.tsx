@@ -6,12 +6,14 @@ type ProjectCardProps = {
     project: Project;
     index: number;
     categoryLabel: string;
+    onSelect: () => void;
 };
 
 function ProjectCard({
     project,
     index,
     categoryLabel,
+    onSelect,
 }: ProjectCardProps) {
 
      const cardRef = useRef<HTMLElement>(null);
@@ -68,7 +70,16 @@ function ProjectCard({
                     <p>{project.description}</p>
             </div>
         </div>
-                    
+
+            <button 
+                type="button"
+                className={styles.projectOpenButton}
+                onClick={() => {
+                    console.log("kliknieto projekt:", project.title);
+                    onSelect();
+                }}
+                aria-label={`Zobacz szczegóły realizacji: ${project.title}`}
+            />       
 
         </article>
     );
