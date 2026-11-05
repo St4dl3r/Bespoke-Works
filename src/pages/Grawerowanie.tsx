@@ -15,17 +15,17 @@ function Grawerowanie() {
     const features = [
         {
             title: "Znakowanie elementów",
-            description: "Nanoszenie oznaczeń identyfikacyjnych na elementy i detale"
+            description: "Nanosimy numery seryjne, kody QR i DataMatrix oraz inne oznaczenia identyfikacyjne, które nie ścierają się w trakcie użytkowania."
         },
 
         {
             title: "Grawerowanie laserowe",
-            description: "Wykonywanie napisów, symboli i grafik za pomocą lasera"
+            description: "Wykonujemy napisy, symbole, logotypy i grafiki na metalu, drewnie, akrylu i skórze."
         },
 
         {
             title: "Personalizacja detali",
-            description: "Indywidualne oznaczanie elementów zgodnie z wymaganiami projektu"
+            description: "Oznaczamy elementy indywidualnie, zgodnie z Twoim projektem, wzorem i wymaganiami."
         }
     ]
 
@@ -34,13 +34,15 @@ function Grawerowanie() {
         <div>
             <ServiceHero 
                 title="Grawerowanie i znakowanie laserowe"
-                description="Precyzyjne nanoszenie oznaczeń, napisów i grafik na elementy techniczne oraz użytkowe."
+                description="Trwałe oznaczenia, napisy i grafiki na elementach technicznych i użytkowych. Grawerujemy 
+                pojedyncze sztuki oraz małe serie."
                 image={heroImage}
             />
             <ServiceFeatures features={features} />
             <ServiceSection 
                 title="Zastosowania grawerowania laserowego"
-                description="Znakowanie elementów przemysłowych, nanoszenie napisów, symboli oraz oznaczeń identyfikacyjnych."
+                description="Grawerowanie sprawdza się przy oznaczaniu części przemysłowych, narzędzi i oprzyrządowania, ale 
+                też przy personalizacji gadżetów, tabliczek i prezentów. Efekt jest trwały, estetyczny i powtarzalny."
                 image = {grawImage}
             />
 
@@ -48,7 +50,9 @@ function Grawerowanie() {
 
             <ServiceSection 
                 title="Znakowanie elementów technicznych"
-                description="Indywidualne oznaczanie detali zgodnie z wymaganiami projektu i przeznaczeniem elementu."
+                description="Oznaczamy detale zgodnie z wymaganiami projektu i przeznaczeniem elementu: numerami 
+                seryjnymi, kodami, logo lub opisami. Dzięki temu łatwiej zidentyfikujesz części i zachowasz porządek 
+                w produkcji."
                 image= {graw2Image}
                 reverse= {true}
             />

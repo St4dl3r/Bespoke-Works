@@ -2,8 +2,26 @@
     max-width: 1500px;
     width: 100%;
     margin: 0 auto;
-    padding: 50px 24px;
+    padding: 15px 24px 50px;
+    box-sizing: border-box;
 }
+
+.sectionTitle {
+    color: var(--color-primary);
+
+    opacity: 0;
+    transform: translateX(-65px);
+
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1)
+}
+
+.visible .sectionTitle {
+    opacity: 1;
+    transform: translateX(0);
+}
+
 
 .featuresGrid {
     display: grid;
@@ -29,7 +47,13 @@
         transform 0.35s ease,
         border-color 0.35s ease,
         box-shadow 0.35s ease;
+
+    opacity: 0;
     
+}
+
+.visible .featureCard {
+    animation: featureDrop 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .featureCard:hover {
@@ -38,7 +62,29 @@
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
 }
 
+@keyframes featureDrop {
+    from {
+        opacity: 0;
+        translate: 0 -80px;
+    }
 
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+.visible .featureCard:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.visible .featureCard:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.visible .featureCard:nth-child(3) {
+    animation-delay: 0.8s;
+}
 
 @media (max-width: 768px) {
     .featuresGrid{
@@ -55,7 +101,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .sectionTitle,
     .featureCard {
+        opacity: 1;
+        transform: none;
+        translate: none;
         transition: none;
+        animation: none !important;
     }
 }

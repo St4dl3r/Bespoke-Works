@@ -8,7 +8,7 @@ import Grawerowanie from './pages/Grawerowanie'
 import Kontakt from './pages/Kontakt'
 import Realizacje from './pages/Realizacje'
 import Layout from './components/Layout/Layout'
-import ScrollToTop from './components/ScrollToTop'
+import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 
 
 

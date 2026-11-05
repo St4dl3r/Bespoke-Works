@@ -3,6 +3,7 @@ import { useEffect, useRef ,useState } from "react";
 import { Link } from "react-router-dom";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import { projects } from "../../data/projects";
 import type { ProjectCategory } from "../../data/projects";
@@ -115,7 +116,7 @@ function ProjectPreview({ category }: ProjectPreviewProps) {
                         onClick={() => emblaApi?.scrollPrev()}
                         aria-label="Poprzednie realizacje"
                     >
-                        <span aria-hidden="true">🠘</span>
+                        <span aria-hidden="true"><FaChevronLeft /></span>
                     </button>
 
                     <button
@@ -123,7 +124,7 @@ function ProjectPreview({ category }: ProjectPreviewProps) {
                     onClick={() => emblaApi?.scrollNext()}
                     aria-label="Następne realizacje"
                     >
-                        <span aria-hidden="true">🠚</span>
+                        <span aria-hidden="true"><FaChevronRight /></span>
                     </button>
                 </div>
             )}

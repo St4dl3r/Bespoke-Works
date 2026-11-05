@@ -13,6 +13,7 @@
     height: 420px;
     overflow: hidden;
     border-radius: 20px;
+    animation: heroFadeIn 1.3s ease-out 0.25s both;
 }
 
 .image {
@@ -22,8 +23,12 @@
     display: block;
 }
 
+.heroContent {
+    animation: heroSlideIn 1.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 .heroContent h1 {
-    font-size: clamp(36, 4vw, 64px);
+    font-size: clamp(36px, 4vw, 64px);
     line-height: 1.1;
     margin: 0 0 24px;
 }
@@ -44,6 +49,41 @@
     margin-bottom: 20px;
 }
 
+@keyframes heroFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+    
+}
+
+@keyframes heroSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-65px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes heroSlideInMobile {
+    from {
+        opacity: 0;
+        transform: translateX(-25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 @media (max-width: 768px)
 {
     .hero{
@@ -58,5 +98,16 @@
 
     .heroImage {
         height: 280px;
+    }
+
+    .heroContent {
+        animation-name: heroSlideInMobile;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .heroContent,
+    .heroImage {
+        animation: none;
     }
 }

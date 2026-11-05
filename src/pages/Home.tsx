@@ -11,28 +11,28 @@ function Home() {
     const services = [
         {
         title: "Druk 3D FDM",
-        description: "Prototypowanie i produkcja elementów FDM",
+        description: "Szybkie prototypy i trwałe części użytkowe z materiałów inżynierskich. Idealne rozwiązanie do pojedynczych sztuk i małych serii.",
         path: "/druk-3d",
         image: drukImage
         },
 
         {
-        title: "CAD / Skanowanie 3D",
-        description: "Projektowanie i odwzorowywanie elementów",
+        title: "CAD i skanowanie 3D",
+        description: "Projektujemy od zera albo odtwarzamy istniejące elementy na podstawie skanu 3D. Dzięki temu powstaje dokładny model, gotowy do produkcji. ",
         path: "/cad-skanowanie-3d",
         image: cadImage
         },
 
         {
         title: "Grawerowanie Laserowe",
-        description: "Znakowanie i grawerowanie elementów",
+        description: "Trwałe znakowanie i grawerowanie elementów z metalu, drewna, akrylu i skóry. Numery seryjne, logotypy, personalizacja.",
         path: "/grawerowanie-laserowe",
         image: grawImage
         },
 
         {
         title: "Frezowanie CNC",
-        description: "Obróbka CNC i produkcja małoseryjna",
+        description: "Precyzyjna obróbka detali na centrum obróbczym Haas, od prototypu po małe serie. Powtarzalna dokładność i wysoka jakość wykonania.",
         path: "/frezowanie-cnc",
         image: cncImage
         }
@@ -41,14 +41,15 @@ function Home() {
 
     return(
         <div>
-            <section className={styles.hero}>
+            <section className={styles.heroBackground}>
+                <div className={styles.hero}>
                 <span className={styles.heroLabel}>BESPOKE WORKS</span>
 
                 <h1>Od projektu do gotowego elementu.</h1>
                 <p>
-                    Projektowanie CAD, skanowanie 3D, druk FDM,
-                    grawerowanie laserowe i frezowanie CNC.
-                    Rozwiązania dla prototypowania i produkcji małoseryjnej.
+                    Projektujemy, skanujemy, drukujemy, grawerujemy i frezujemy, a to wszystko w jednym miejscu. 
+                    Pomagamy zamienić pomysł w precyzyjnie wykonany element, od pojedynczego prototypu po małe 
+                    serie. 
                 </p>
 
                 <div className={styles.heroActions}>
@@ -61,15 +62,17 @@ function Home() {
                     </Link>
 
                 </div>
+                </div>
             </section>
             <div className={styles.servicesContainer}>
-                {services.map((service) => (
+                {services.map((service, index) => (
                     <ServiceCard 
                         title={service.title}
                         description={service.description}
                         path={service.path}
                         key={service.path}
                         image={service.image}
+                        index={index}
                     />
                 ))}
             </div>

@@ -14,17 +14,17 @@ function Druk3D() {
     const features = [
         {
             title: "Prototypowanie",
-            description: "Przygotowywanie prototypów i modeli testowych"
+            description: "Wykonujemy prototypy i modele testowe, na których sprawdzisz kształt, dopasowanie i działanie elementu, zanim zainwestujesz w produkcję."
         },
 
         {
             title: "Produkcja jednostkowa",
-            description: "Wykonywanie pojedynczych elementów"
+            description: "Drukujemy pojedyncze elementy na zamówienie: części zamienne, uchwyty, obudowy i projekty indywidualne."
         },
 
         {
             title: "Produkcja małoseryjna",
-            description: "Wytwarzanie niewielkich serii elementów"
+            description: "Realizujemy niewielkie serie powtarzalnych elementów, bez kosztów form i oprzyrządowania."
         }
     ]
 
@@ -33,7 +33,7 @@ function Druk3D() {
         <div>
             <ServiceHero 
             title="Druk 3D FDM"
-            description="Prototypowanie, produkcja jednostkowa i małoseryjna w technologii FDM."
+            description="Szybkie prototypy i trwałe części użytkowe wykonane w technologii FDM. Drukujemy pojedyncze sztuki oraz małe serie."
             image={heroImage}
             />
 
@@ -41,7 +41,8 @@ function Druk3D() {
             />
             <ServiceSection 
             title="Zastosowania Druku 3D"
-            description="Opis zastosowan druku 3D"
+            description="Druk FDM sprawdza się wszędzie tam, gdzie liczy się szybkość i elastyczność. Wykorzystujemy go do prototypów, uchwytów montażowych, obudów, 
+            części zamiennych, pomocy warsztatowych i modeli dydaktycznych."
             image={zastosowaniaImage}
             />
 
@@ -49,7 +50,11 @@ function Druk3D() {
 
             <ServiceSection
             title="Materiały do druku 3D"
-            description="Informacje o dostępnych materiałach — do uzupełnienia"
+            description="Dobieramy materiał do zadania, czyli do wymaganej wytrzymałości, temperatury pracy i wyglądu 
+            elementu. Drukujemy m.in. z PLA, PETG, ABS, ASA, PA (także z włóknem węglowym), PC oraz 
+            elastycznych TPU i TPE. Na zapytanie wykonujemy też elementy z tworzyw wysokotemperaturowych: 
+            PEEK, PEKK, PPS, PSU i PEI (Ultem). Pomożemy wybrać materiał, który najlepiej sprawdzi się w 
+            Twoim projekcie."
             image={materialyImage}
             reverse = {true}
             />

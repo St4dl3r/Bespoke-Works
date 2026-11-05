@@ -13,19 +13,19 @@ function CadSkanowanie() {
     const features = [
         {
             title: "Projektowanie CAD",
-            description: "Tworzenie modeli 3D na podstawie założeń i dokumentacji technicznej"
+            description: "Tworzymy modele 3D na podstawie Twoich założeń, szkiców, wymiarów lub dokumentacji technicznej."
             
     },
 
     {
             title: "Skanowanie 3D",
-            description: "Digitalizacja geometrii istniejących elementów"
+            description: "Bezdotykowo i dokładnie odwzorowujemy geometrię istniejących elementów, także tych bez dokumentacji."
             
     },
 
     {
             title: "Przygotowanie modeli",
-            description: "Przygotowywanie modeli cyfrowych do dalszych prac projektowych lub produkcyjnych"
+            description: "Przygotowujemy modele cyfrowe do dalszych prac: druku 3D, frezowania CNC lub innych procesów produkcyjnych."
             
     }
 ]
@@ -36,14 +36,17 @@ function CadSkanowanie() {
         <div>
             <ServiceHero 
                 title="Projektowanie CAD i Skanowanie 3D"
-                description="Projektowanie modeli 3D oraz digitalizacja geometrii istniejących elementów."
+                description="Projektujemy modele 3D od zera i cyfrowo odwzorowujemy istniejące elementy. Dzięki temu masz 
+                okładną podstawę do prototypu, produkcji lub modyfikacji."
                 image={heroImage}
             />
 
             <ServiceFeatures features={features} />
             <ServiceSection 
                 title="Zastosowania projektowania CAD"
-                description="Projektowanie modeli i elementów technicznych na potrzeby prototypowania oraz produkcji."
+                description="Projektujemy elementy techniczne, uchwyty, obudowy i części zamienne, uwzględniając funkcję, 
+                wytrzymałość i wybraną technologię wykonania. Gotowy model możemy od razu wykonać w naszej 
+                pracowni."
                 image={cadImage}
             />
             
@@ -52,7 +55,9 @@ function CadSkanowanie() {
 
             <ServiceSection 
                 title="Skanowanie 3D"
-                description="Pozyskiwanie danych o geometrii rzeczywistych obiektów do dalszego wykorzystania w projektowaniu."
+                description="Skanowanie pozwala odtworzyć kształt rzeczywistego obiektu bez ręcznych pomiarów. 
+                Wykorzystujemy je do reverse engineeringu, kopiowania zużytych lub niedostępnych części oraz 
+                dopasowywania nowych elementów do już istniejących."
                 image={skanImage}
                 reverse= {true}
             />

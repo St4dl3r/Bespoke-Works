@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import styles from "./ServiceFeatures.module.css"
 
 type Feature = {
@@ -10,10 +11,38 @@ type ServiceFeaturesProps = {
 }
 
 function ServiceFeatures({features}: ServiceFeaturesProps){
-    
+
+    const sectionRef = useRef<HTMLElement>(null);
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const section = sectionRef.current;
+
+        if(!section) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    observer.unobserve(entry.target);
+                }
+            },
+            {
+                threshold: 0.15,
+            }
+        );
+
+        observer.observe(section);
+
+        return () => observer.disconnect();
+    }, []);
+
     return(
-        <section className={styles.features}>
-            <h2>Możliwości technologiczne</h2>
+        <section 
+            ref={sectionRef}
+            className={`${styles.features} ${isVisible ? styles.visible : ""}`}
+        >
+            <h2 className={styles.sectionTitle}>Możliwości technologiczne</h2>
             <div className={styles.featuresGrid}>
                 {features.map((feature) => (
                     <article key={feature.title} className={styles.featureCard}>

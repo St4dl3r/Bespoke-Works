@@ -14,19 +14,19 @@ function FrezowanieCNC() {
     const features = [
         {
             title: "Obróbka precyzyjna",
-            description: "Wykonywanie elementów zgodnie z dokumentacją i wymaganiami projektu"
+            description: "Wykonujemy elementy zgodnie z rysunkiem technicznym, modelem 3D i wymaganiami projektu, z zachowaniem tolerancji."
 
         },
 
         {
             title: "Prototypowanie CNC",
-            description: "Przygotowywanie prototypów i pojedynczych elementów"
+            description: "Przygotowujemy prototypy i pojedyncze elementy, które możesz przetestować w docelowym materiale."
 
         },
 
         {
             title: "Produkcja małoseryjna",
-            description: "Wytwarzanie niewielkich serii detali"
+            description: "Realizujemy niewielkie serie detali, a każda sztuka ma tę samą jakość i wymiary."
 
         }
     ]
@@ -35,13 +35,15 @@ function FrezowanieCNC() {
         <div>
             <ServiceHero 
                 title="Frezowanie CNC"
-                description="Precyzyjna obróbka elementów na potrzeby prototypowania oraz produkcji jednostkowej i małoseryjnej."
+                description="Precyzyjna obróbka elementów na centrum obróbczym Haas, od prototypów po małe serie. 
+                Wykonujemy detale zgodnie z dokumentacją, z zachowaniem dokładności i powtarzalności."
                 image={heroImage}
             />
             <ServiceFeatures features={features} />
             <ServiceSection 
                 title="Zastosowania frezowania CNC"
-                description="Wykonywanie elementów technicznych, prototypów oraz części na potrzeby produkcji jednostkowej i małoseryjnej."
+                description="Frezujemy elementy techniczne, uchwyty, oprzyrządowanie, obudowy i części zamienne. To dobre 
+                rozwiązanie tam, gdzie potrzebna jest wytrzymałość metalu i wysoka dokładność wykonania. "
                 image= {frez1Image}
             />
 
@@ -49,7 +51,9 @@ function FrezowanieCNC() {
 
             <ServiceSection 
                 title="Proces obróbki CNC"
-                description="Przygotowywanie i wykonywanie detali na podstawie dokumentacji technicznej oraz wymagań projektu."
+                description="Zaczynamy od analizy dokumentacji lub modelu 3D, następnie przygotowujemy program obróbki i 
+                wykonujemy detal. Na koniec kontrolujemy wymiary i jakość wykonania. Jeśli nie masz jeszcze 
+                dokumentacji, przygotujemy ją za Ciebie."
                 image= {frez2Image}
                 reverse = {true}
             />
