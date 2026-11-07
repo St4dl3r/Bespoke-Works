@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import ProcessTimeLine from "../components/ProcessTimeLine/ProcessTimeLine";
 import styles from "./Kontakt.module.css";
 
 function Kontakt(){
@@ -30,6 +31,7 @@ function Kontakt(){
 }, []);
 
     return(
+    <div className={styles.contactBackground}>
         <div className={styles.contactPage}>
             <section 
                 ref={sectionRef}
@@ -107,6 +109,8 @@ function Kontakt(){
             </div>
             </div>
             </section>
+            <ProcessTimeLine />
+        </div>
         </div>
     );
 }

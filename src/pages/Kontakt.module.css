@@ -1,3 +1,19 @@
+.contactBackground {
+    width: 100%;
+    min-height: 100vh;
+
+    background-image:
+        linear-gradient(
+            rgba(17, 17, 17, 0.86),
+            rgba(17, 17, 17, 0.86)
+        ),
+        url("../assets/images/bespoke-tech-pattern.webp");
+
+    background-size: auto, 1100px auto;
+    background-repeat: no-repeat, repeat;
+    background-position: center, center top;
+}
+
 .contactPage {
     width: 100%;
     max-width: 100%;
@@ -335,3 +351,4 @@
         transition: none;
     }
 }
+

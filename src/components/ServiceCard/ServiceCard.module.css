@@ -38,10 +38,6 @@
     z-index: 1;
 }
 
-.card:hover .cardBackground {
-    filter: brightness(0.75);
-    transform: scale(1.05);
-}
 
 .fromLeft {
     translate: -45px 0;
@@ -60,12 +56,13 @@
     transition-delay: 0.15s;
 }
 
-.card::focus-visible {
+.card:focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 4px;
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
+    .card:hover .cardBackground,
     .card:focus-visible .cardBackground {
         filter: brightness(0.75);
         transform: scale(1.05);
@@ -74,12 +71,12 @@
 
 @media (max-width: 768px) {
     .cardBackground {
-        filter: brightness(5);
+        filter: brightness(0.2);
     }
 
-    .card:hover .cardBackground {
-        filter: brightness(0.5);
-        transform: none;
+    .card:active .cardBackground {
+        filter: brightness(0.75);
+        transform: scale(1.05);
     }
 
     .fromLeft,

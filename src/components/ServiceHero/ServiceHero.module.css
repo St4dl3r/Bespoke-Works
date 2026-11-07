@@ -1,9 +1,28 @@
+.heroBackground {
+    width: 100%;
+
+    background-image: 
+        linear-gradient(
+            to bottom,
+            rgba(17, 17, 17, 0.72) 0%,
+            rgba(17, 17, 17, 0.78) 55%,
+            #111111 100%
+        ),
+        url("../../assets/images/bespoke-tech-pattern.webp");
+
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+}
+
 .hero {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 50px;
     align-items: center;
 
+    box-sizing: border-box;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 80px 24px;
@@ -90,6 +109,10 @@
         grid-template-columns: 1fr;
         gap: 30px;
         padding: 50px 16px;
+    }
+
+    .heroBackground {
+        background-position: center;
     }
 
     .heroContent p {

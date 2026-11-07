@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { company } from "../../data/company";
 import styles from "./Footer.module.css";
 
 function Footer() {
@@ -7,7 +8,23 @@ function Footer() {
             <div className={styles.footerContent}>
                 <section className={styles.company}>
                     <h2>Bespoke Works</h2>
-                    <p>Tutaj bedzie adres firmy</p>
+                    <a 
+                        href={company.mapsUrl}
+                        target="noopener noreferrer"
+                        className={styles.companyAddress}
+                    >
+                        <span>{company.address.street}</span>
+                        <span>
+                            {company.address.postalCode} {company.address.city}
+                        </span>
+                    </a>
+
+                    <div className={styles.companyHours}>
+                        <h3>Godziny otwarcia</h3>
+
+                        <p>Poniedziałek - piątek</p>
+                        <p>{company.openingHours.weekdays}</p>
+                    </div>
                 </section>
             
             

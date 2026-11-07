@@ -22,6 +22,61 @@
     min-width: 0;
 }
 
+.company {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+}
+
+.companyAddress {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    color: var(--color-text-muted);
+    font-size: 15px;
+    line-height: 1.6;
+    text-decoration: none;
+
+    transition: color 0.3s ease;
+}
+
+.companyAddress:hover {
+    color: var(--color-primary);
+}
+
+.companyAddress:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+}
+
+.companyHours {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    padding-top: 18px;
+    border-top: 1px solid var(--color-border);
+}
+
+.companyHours h3 {
+    margin: 0 0 6px;
+
+    color: var(--color-text);
+    font-size: 15px;
+    font-weight: 600;
+
+}
+
+.companyHours p {
+    margin: 0;
+
+    color: var(--color-text-muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
 .company h2 {
     margin: 0;
 
@@ -94,6 +149,23 @@
     .footerContent {
         gap: 35px 20px;
         padding: 50px 24px 40px;
+    }
+
+    .company {
+        gap: 16px;
+    }
+
+    .companyAddress {
+        font-size: 14px;
+    }
+
+    .companyHours {
+        padding-top: 14px;
+    }
+
+    .companyHours h3,
+    .companyHours p {
+        font-size: 13px;
     }
 
     .company h2 {

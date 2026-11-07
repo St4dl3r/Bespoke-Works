@@ -1,0 +1,218 @@
+.applications {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 100px 24px;
+    box-sizing: border-box;
+    overflow: clip;
+}
+
+.heading {
+    margin-bottom: 45px;
+
+    opacity: 0;
+    transform: translateX(-50px);
+
+    transition: 
+        opacity 1s ease,
+        transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.headingVisible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.label {
+    display: block;
+    margin-bottom: 12px;
+
+    color: var(--color-primary);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.heading h2 {
+    margin: 0;
+
+    color: var(--color-text);
+    font-size: clamp(30px, 3.5vw, 46px);
+    font-weight: 700;
+}
+
+.applicationsGrid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.applicationCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+
+    min-width: 0;
+    min-height: 250px;
+    padding: 35px 15px 28px;
+
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    box-sizing: border-box;
+
+    opacity: 0;
+    translate: 65px 0;
+
+    transition: 
+        opacity 1.2s ease,
+        translate 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.applicationCard.cardVisible {
+    opacity: 1;
+    translate: 0 0;
+}
+
+.applicationCard h3 {
+    margin: 0;
+
+    color: var(--color-primary);
+    font-size: clamp(14px, 1.3vw, 19px);
+    font-weight: 700;
+    text-align: center;
+}
+
+.iconPlaceholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 110px;
+    height: 110px;
+}
+
+.iconPlaceholder img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    filter: brightness(0) saturate(100%)
+            invert(80%) sepia(53%) saturate(649%)
+            hue-rotate(349deg) brightness(97%) contrast(88%);
+
+    transition: transform 0.35s ease;
+}
+
+@media (hover: hover) {
+    .applicationCard:hover .iconPlaceholder img {
+        transform: scale(1.12);
+    }
+}
+
+.description {
+    margin: 45px auto 0;
+    max-width: 850px;
+
+    color: var(--color-text-muted);
+    font-size: 18px;
+    line-height: 1.7;
+    text-align: center;
+
+    opacity: 0;
+    transform: translateY(35px);
+
+    transition:
+        opacity 1.3s ease,
+        transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.descriptionVisible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (hover: hover) {
+    .applicationCard:hover {
+        transform: translateY(-8px);
+        border-color: var(--color-primary);
+        box-shadow: 0 16px 35px rgba(0, 0, 0, 0.3);
+    }
+}
+
+@media (min-width: 1101px) {
+    .applicationCard:nth-child(1) {
+        transition-delay: 0s, 0s, 0s, 0s, 0s;
+    }
+
+    .applicationCard:nth-child(2) {
+        transition-delay: 0.2s, 0.2s, 0s, 0s, 0s;
+    }
+
+    .applicationCard:nth-child(3) {
+        transition-delay: 0.4s, 0.4s, 0s, 0s, 0s;
+    }
+
+    .applicationCard:nth-child(4) {
+        transition-delay: 0.6s, 0.6s, 0s, 0s, 0s;
+    }
+
+    .applicationCard:nth-child(5) {
+        transition-delay: 0.8s, 0.8s, 0s, 0s, 0s;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1100px) {
+    .applicationsGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .applications {
+        padding: 70px 16px;
+    }
+
+    .applicationsGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .applicationCard {
+        min-height: 190px;
+        padding: 25px 12px;
+        translate: 30px 0;
+    }
+
+    .applicationCard.cardVisible {
+        translate: 0 0;
+    }
+
+    .description {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 380px) {
+    .applicationsGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .heading,
+    .applicationCard,
+    .iconPlaceholder img,
+    .description {
+        opacity: 1;
+        translate: none;
+        transform: none;
+        transition: none !important;
+    }
+}

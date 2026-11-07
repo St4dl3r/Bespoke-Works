@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import ServiceCard from "../components/ServiceCard/ServiceCard";
+import Applications from "../components/Applications/Applications";
+import LocationSection from "../components/LocationSection/LocationSection";
 import styles from "./Home.module.css";
 import drukImage from "../assets/images/zdjecie1.jpg"
 import cadImage from "../assets/images/skanowanie.jpg"
@@ -76,6 +78,8 @@ function Home() {
                     />
                 ))}
             </div>
+                <Applications />
+                <LocationSection />
         </div>
     );    
 }
